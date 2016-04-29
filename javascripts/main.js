@@ -139,8 +139,11 @@ $(function () {
   });
 });
 function CheckHashState() {
-  if (location.hash.slice(1).length > 0) {
-    var target = $("#JumpTo" + location.hash.slice(1));
+  var slice = location.hash.slice(1);
+  if (slice.length > 0) {
+    if (slice.indexOf("!") > -1)
+      return;
+    var target = $("#JumpTo" + slice);
     if (target.length) {
       JumpTo(target);
     }
