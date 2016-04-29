@@ -1,5 +1,6 @@
 body{
     background:#242F36;
+    min-width: 1043px;
 }
 #header_wrap{
     height: 50px;
@@ -36,8 +37,11 @@ body{
 #header_intro .inner {
     padding: 50px;
     color: #E4E4E4;
+    min-width: 850px;
+    max-width: 850px;
 }
 .inner {
+    min-width: 1043px;
     max-width: 1043px;
     margin: 0 auto;
 }
@@ -183,6 +187,9 @@ h3{
     width: 1px;
     margin-top:auto;
     margin-bottom:auto;
+}
+.dashedLineRight{
+    width: 2px;
 }
 #supportUsOn{
     margin: auto;
