@@ -144,9 +144,9 @@ function JumpTo(target) {
   }, 1000);
 }
 function WorkCallback(apiLink, callbacks) {
-  $.getJSON(apiLink, (data) => {
+  $.getJSON(apiLink, (githubData) => {
     callbacks.forEach((callback)=>{
-      callback(data);
+      callback(githubData);
     });
   });
 }
