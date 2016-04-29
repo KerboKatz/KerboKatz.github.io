@@ -144,13 +144,14 @@ function JumpTo(target) {
   }, 1000);
 }
 function WorkCallback(apiLink, callbacks) {
-  $.ajax({
-    url: apiLink
-  }).done(function (data) {
+  var callbackMethod = (data) => {
     callbacks.forEach((callback) => {
       callback(data);
     });
-  });
+  };
+  $.ajax({
+    url: apiLink
+  }).done(callbackMethod);
   /*$.getJSON(apiLink, (data)=> {
     callbacks.forEach((callback) => {
       callback(data);
