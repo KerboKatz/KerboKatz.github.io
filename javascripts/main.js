@@ -119,11 +119,11 @@ $(function () {
   windowC.scroll(function () {
     var scrollTop = windowC.scrollTop();
     var normalized = scrollTop / 250;
-    var lerped = Lerp(50, 25,  normalized);
+    var lerped = Lerp(50, 25, normalized);
     headerWraper.css({
       "height": lerped
     });
-    lerped = Lerp(99, 50,  normalized);
+    lerped = Lerp(99, 50, normalized);
     headerLogo.css({
       "width": lerped,
       "height": lerped
@@ -140,15 +140,22 @@ function CheckHashState() {
 }
 function JumpTo(target) {
   body.stop().animate({
-    scrollTop: target.offset().top-25
+    scrollTop: target.offset().top - 25
   }, 1000);
 }
 function WorkCallback(apiLink, callbacks) {
-  $.getJSON(apiLink, (data)=> {
+  $.ajax({
+    url: apiLink
+  }).done(function (data) {
     callbacks.forEach((callback) => {
       callback(data);
     });
   });
+  /*$.getJSON(apiLink, (data)=> {
+    callbacks.forEach((callback) => {
+      callback(data);
+    });
+  });*/
 }
 function InitMods(mod) {
   var nameSpaceless = mod.name.replace(/\s/g, '')
@@ -226,13 +233,13 @@ function InitMods(mod) {
         infoContainer.children(".lastVersionContainer").children(".lastVersion").text(lastVersion);
       infoContainer.children(".downloadCountContainer").children(".downloadCount").text(count);
 
-  if (isWebkit) {
-    var height = modTemplate.height()-50;
-    var rightSide = modTemplate.children(".dashedLineRight");
-    rightSide.css("height", height);
-    rightSide.css("marginLeft", 2);
-    modTemplate.children(".dashedLineLeft").css("height", height);
-  }
+      if (isWebkit) {
+        var height = modTemplate.height() - 50;
+        var rightSide = modTemplate.children(".dashedLineRight");
+        rightSide.css("height", height);
+        rightSide.css("marginLeft", 2);
+        modTemplate.children(".dashedLineLeft").css("height", height);
+      }
     });
 
   } else {
