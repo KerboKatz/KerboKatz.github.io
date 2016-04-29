@@ -144,19 +144,11 @@ function JumpTo(target) {
   }, 1000);
 }
 function WorkCallback(apiLink, callbacks) {
-  var callbackMethod = (data) => {
-    callbacks.forEach((callback) => {
+  $.getJSON(apiLink, (data) => {
+    callbacks.forEach((callback)=>{
       callback(data);
     });
-  };
-  $.ajax({
-    url: apiLink
-  }).done(callbackMethod);
-  /*$.getJSON(apiLink, (data)=> {
-    callbacks.forEach((callback) => {
-      callback(data);
-    });
-  });*/
+  });
 }
 function InitMods(mod) {
   var nameSpaceless = mod.name.replace(/\s/g, '')
