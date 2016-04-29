@@ -116,9 +116,17 @@ $(function () {
   var windowC = $(window);
   var headerWraper = $("#header_wrap");
   var headerLogo = $("#headerLogo");
+  var headerIntro = $("#header_intro");
+  var headerIntroOffset = 0;
+  var reCalculate = () => {
+    headerIntroOffset = (headerIntro.offset().top + headerIntro.outerHeight() - 25);
+  }
+  reCalculate();
+  window.setTimeout(reCalculate, 1000);
+  window.setTimeout(reCalculate, 10000);
   windowC.scroll(function () {
     var scrollTop = windowC.scrollTop();
-    var normalized = scrollTop / 250;
+    var normalized = scrollTop / headerIntroOffset;
     var lerped = Lerp(50, 25, normalized);
     headerWraper.css({
       "height": lerped
@@ -145,7 +153,7 @@ function JumpTo(target) {
 }
 function WorkCallback(apiLink, callbacks) {
   $.getJSON(apiLink, (githubData) => {
-    callbacks.forEach((callback)=>{
+    callbacks.forEach((callback) => {
       callback(githubData);
     });
   });
