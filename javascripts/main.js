@@ -239,7 +239,7 @@ function InitMods(mod) {
       }
       if (lastVersion != 0)
         infoContainer.children(".lastVersionContainer").children(".lastVersion").text(lastVersion);
-      infoContainer.children(".downloadCountContainer").children(".downloadCount").text(count);
+      infoContainer.children(".downloadCountContainer").children(".downloadCount").text(count.toLocaleString());
       infoContainer.children(".downloadSizeContainer").children(".downloadSize").text(filesize(fileSize));
 
       if (isWebkit) {
