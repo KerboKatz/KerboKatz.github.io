@@ -4,7 +4,8 @@ var modInfos = [
     "description": "This is a utility plugin that is needed in almost all of our mods.",
     "github": "Xarun/KerboKatzUtilities",
     "assetName": "KerboKatzUtilities.zip",
-    "icon": "KerboKatz"
+    "icon": "KerboKatz",
+    "netkan": "KerboKatzUtilities"
   },
   {
     "name": "AutomatedScienceSampler",
@@ -12,7 +13,8 @@ var modInfos = [
     "forum": "95531",
     "github": "Xarun/AutomatedScienceSampler",
     "curse": "automatedsciencesampler",
-    "assetName": "AutomatedScienceSampler.zip"
+    "assetName": "AutomatedScienceSampler.zip",
+    "netkan": "AutomatedScienceSampler"
   },
   {
     "name": "CraftHistory",
@@ -20,7 +22,8 @@ var modInfos = [
     "forum": "99770",
     "github": "Xarun/CraftHistory",
     "curse": "crafthistory",
-    "assetName": "CraftHistory.zip"
+    "assetName": "CraftHistory.zip",
+    "netkan": "CraftHistory"
   },
   {
     "name": "SmallUtilities",
@@ -29,7 +32,8 @@ var modInfos = [
     "github": "Xarun/SmallUtilities",
     "curse": "kerbokatz-smallutilities",
     "assetName": "SmallUtilities.zip",
-    "icon": "Utilities"
+    "icon": "Utilities",
+    "netkan": "KerboKatzSmallUtilities"
   },
   {
     "name": "SmallUtilities - FPSLimiter",
@@ -37,7 +41,8 @@ var modInfos = [
     "forum": "104505",
     "github": "Xarun/SmallUtilities",
     "curse": "kerbokatz-smallutilities",
-    "assetName": "SmallUtilities.FPSLimiter.zip"
+    "assetName": "SmallUtilities.FPSLimiter.zip",
+    "netkan": "KerboKatzSmallUtilities-FPSLimiter"
   },
   {
     "name": "SmallUtilities - FPSViewer",
@@ -45,7 +50,8 @@ var modInfos = [
     "forum": "104505",
     "github": "Xarun/SmallUtilities",
     "curse": "kerbokatz-smallutilities",
-    "assetName": "SmallUtilities.FPSViewer.zip"
+    "assetName": "SmallUtilities.FPSViewer.zip",
+    "netkan": "KerboKatzSmallUtilities-FPSViewer"
   },
   {
     "name": "SmallUtilities - PhysicalTimeRatioViewer",
@@ -53,7 +59,8 @@ var modInfos = [
     "forum": "104505",
     "github": "Xarun/SmallUtilities",
     "curse": "kerbokatz-smallutilities",
-    "assetName": "SmallUtilities.PhysicalTimeRatioViewer.zip"
+    "assetName": "SmallUtilities.PhysicalTimeRatioViewer.zip",
+    "netkan": "KerboKatzSmallUtilities-PhysicalTimeRatioViewer"
   },
   {
     "name": "SmallUtilities - ModifiedExplosionPotential",
@@ -62,7 +69,8 @@ var modInfos = [
     "github": "Xarun/SmallUtilities",
     "curse": "kerbokatz-smallutilities",
     "assetName": "SmallUtilities.ModifiedExplosionPotential.zip",
-    "icon": "Utilities"
+    "icon": "Utilities",
+    "netkan": "KerboKatzSmallUtilities-ModifiedExplosionPotential"
   },
   {
     "name": "SmallUtilities - RecoverAll",
@@ -71,7 +79,8 @@ var modInfos = [
     "github": "Xarun/SmallUtilities",
     "curse": "kerbokatz-smallutilities",
     "assetName": "SmallUtilities.RecoverAll.zip",
-    "icon": "Utilities"
+    "icon": "Utilities",
+    "netkan": "KerboKatzSmallUtilities-RecoverAll"
   },
   {
     "name": "SmallUtilities - DestroyAll",
@@ -80,7 +89,8 @@ var modInfos = [
     "github": "Xarun/SmallUtilities",
     "curse": "kerbokatz-smallutilities",
     "assetName": "SmallUtilities.DestroyAll.zip",
-    "icon": "Utilities"
+    "icon": "Utilities",
+    "netkan": "KerboKatzSmallUtilities-DestroyAll"
   },
   {
     "name": "SmallUtilities - EditorCamUtilities",
@@ -89,7 +99,8 @@ var modInfos = [
     "github": "Xarun/SmallUtilities",
     "curse": "kerbokatz-smallutilities",
     "assetName": "SmallUtilities.EditorCamUtilities.zip",
-    "icon": "EditorCamUtilities"
+    "icon": "EditorCamUtilities",
+    "netkan": "KerboKatzSmallUtilities-EditorCamUtilities"
   }
 ];
 
@@ -250,10 +261,25 @@ function InitMods(mod) {
         modTemplate.children(".dashedLineLeft").css("height", height);
       }
     });
-
   } else {
     githubObj.remove();
     sourceObj.remove();
+  }
+  if (typeof mod.netkan != "undefined") {
+    apiLink = "https://raw.githubusercontent.com/KerboKatz/Netkan/master/" + mod.netkan + ".netkan";
+    callbacks = ajaxCallbacks.get(apiLink);
+    if (!callbacks) {
+      callbacks = new Array();
+      ajaxCallbacks.add(apiLink, callbacks);
+    }
+    callbacks.push(function (data) {
+      var kspVersion = 0;
+      if (typeof data.ksp_version_max != "undefined")
+        kspVersion = data.ksp_version_max;
+      else
+        kspVersion = data.ksp_version;
+      infoContainer.children(".kspVersionContainer").children(".kspVersion").text(kspVersion);
+    });
   }
   if (typeof mod.forum != "undefined") {
     if (prevLinkSet)
