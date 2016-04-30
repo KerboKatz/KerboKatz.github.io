@@ -138,7 +138,8 @@ body{
     padding-top: 7px;
 }
 .lastVersionContainer,
-.downloadCountContainer{
+.downloadCountContainer,
+.downloadSizeContainer{
     margin-top:-2px;
 }
 .TabSelector > a, .paddingLeft{

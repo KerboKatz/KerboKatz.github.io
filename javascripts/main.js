@@ -206,6 +206,7 @@ function InitMods(mod) {
     var count = 0;
     var releaseDate = 0;
     var lastVersion = 0;
+    var fileSize = 0;
     var callbacks = ajaxCallbacks.get(apiLink);
     if (!callbacks) {
       callbacks = new Array();
@@ -222,6 +223,9 @@ function InitMods(mod) {
               if (releaseDate == 0) {
                 releaseDate = data.published_at;
               }
+              if (fileSize == 0) {
+                fileSize = asset.size;
+              }
               count += asset.download_count;
             }
           }
@@ -236,6 +240,7 @@ function InitMods(mod) {
       if (lastVersion != 0)
         infoContainer.children(".lastVersionContainer").children(".lastVersion").text(lastVersion);
       infoContainer.children(".downloadCountContainer").children(".downloadCount").text(count);
+      infoContainer.children(".downloadSizeContainer").children(".downloadSize").text(filesize(fileSize));
 
       if (isWebkit) {
         var height = modTemplate.height() - 50;
