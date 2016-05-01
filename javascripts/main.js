@@ -299,7 +299,7 @@ function TrackExternalLinks() {
     var onClick = current.attr("onClick");
     if (typeof onClick == "undefined")
       onClick = "";
-    current.attr("onClick", "trackOutboundLink('" + href + "');"+onClick+";return false;");
+    current.attr("onClick", "trackOutboundLink('" + href + "');"+onClick+";");
   });
 }
 var trackOutboundLink = function(url) {
