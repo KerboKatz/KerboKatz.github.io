@@ -231,19 +231,11 @@ body {
     border-top: 3px #5D7087 solid;
     bottom: 0px;
     position: absolute;
+    min-width:1043px;
 }
 #footer_wrap>.inner{
     padding: 25px;
     width: 950px;
     min-width: 950px;
     max-width: 950px;
-}
-
-@media (max-width: 1043px){
-    #footer_wrap>.inner{
-        padding: 25px;
-        width: 850px;
-        min-width: 850px;
-        max-width: 850px;
-    }
 }
