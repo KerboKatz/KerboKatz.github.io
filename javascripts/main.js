@@ -103,7 +103,6 @@ var modInfos = [
     "netkan": "KerboKatzSmallUtilities-EditorCamUtilities"
   }
 ];
-
 var ajaxCallbacks;
 var body;
 var spacer = "<span>&nbsp;-&nbsp;</span>";
@@ -129,7 +128,7 @@ $(function () {
   var headerLogo = $("#headerLogo");
   var headerIntro = $("#header_intro");
   var headerIntroOffset = 0;
-  var reCalculate = () => {
+  var reCalculate = function () {
     headerIntroOffset = (headerIntro.offset().top + headerIntro.outerHeight() - 25);
   }
   reCalculate();
@@ -148,6 +147,7 @@ $(function () {
       "height": lerped
     });
   });
+  setInterval(function () { ajaxCallbacks.iterate(WorkCallback); }, 15 * 60 * 1000);
 });
 function CheckHashState() {
   var slice = location.hash.slice(1);
@@ -166,8 +166,8 @@ function JumpTo(target) {
   }, 1000);
 }
 function WorkCallback(apiLink, callbacks) {
-  $.getJSON(apiLink, (githubData) => {
-    callbacks.forEach((callback) => {
+  $.getJSON(apiLink, function (githubData) {
+    callbacks.forEach(function (callback) {
       callback(githubData);
     });
   });
@@ -214,19 +214,20 @@ function InitMods(mod) {
     prevLinkSet = true;
 
     var apiLink = "https://api.github.com/repos/" + mod.github + "/releases";
-    var count = 0;
-    var releaseDate = 0;
-    var lastVersion = 0;
-    var fileSize = 0;
+
     var callbacks = ajaxCallbacks.get(apiLink);
     if (!callbacks) {
       callbacks = new Array();
       ajaxCallbacks.add(apiLink, callbacks);
     }
     callbacks.push(function (data) {
-      data.forEach((data) => {
+      var count = 0;
+      var releaseDate = 0;
+      var lastVersion = 0;
+      var fileSize = 0;
+      data.forEach(function (data) {
         data.assets.forEach(
-          (asset) => {
+          function (asset) {
             if (asset.name == mod.assetName) {
               if (lastVersion == 0) {
                 lastVersion = data.name;

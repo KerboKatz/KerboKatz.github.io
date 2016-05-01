@@ -169,6 +169,7 @@ h3{
     font-size: 24px;
 }
 .ModIcon{
+    height: 55px;
     min-width: 55px;
     max-width: 55px;
     min-height: 55px;
@@ -217,4 +218,23 @@ h3{
 #payPalContainer  img,
 #patreonContainer  img{
     padding-top:10px;
+}
+html {
+    position: relative;
+    min-height: 100%;
+}
+body {
+    margin-bottom: 136px;
+}
+#footer_wrap{
+    background-color: #475567;
+    border-top: 3px #5D7087 solid;
+    bottom: 0px;
+    position: absolute;
+}
+#footer_wrap>.inner{
+    padding: 25px;
+    width: 950px;
+    min-width: 950px;
+    max-width: 950px;
 }
