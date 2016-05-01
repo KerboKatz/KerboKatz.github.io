@@ -296,7 +296,10 @@ function TrackExternalLinks() {
   $("a[href]").each(function () {
     var current = $(this);
     var href = this.href;
-    current.attr("onClick", "trackOutboundLink('" + href + "');"+current.attr("onClick")+";return false;");
+    var onClick = current.attr("onClick");
+    if (typeof onClick == "undefined")
+      onClick = "";
+    current.attr("onClick", "trackOutboundLink('" + href + "');"+onClick+";return false;");
   });
 }
 var trackOutboundLink = function(url) {
