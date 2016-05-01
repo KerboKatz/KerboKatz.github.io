@@ -303,13 +303,20 @@ function TrackExternalLinks() {
   $("a[href]").each(function () {
     var current = $(this);
     var href = this.href;
-    current.click(function (e) {
+    current.mousedown(function (e) {
       switch (e.which) {
         case 1:
           TrackOutboundLink(href, true);
           break;
         case 2:
           TrackOutboundLink(href, false);
+          return true;
+      }
+      return false;
+    });
+    current.click(function (e) {
+      switch (e.which) {
+        case 2:
           return true;
       }
       return false;
