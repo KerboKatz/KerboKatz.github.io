@@ -147,6 +147,7 @@ $(function () {
       "height": lerped
     });
   });
+  TrackExternalLinks();
   setInterval(function () { ajaxCallbacks.iterate(WorkCallback); }, 15 * 60 * 1000);
 });
 function CheckHashState() {
@@ -291,7 +292,19 @@ function InitMods(mod) {
   }
 }
 
-
+function TrackExternalLinks() {
+  $("a[href]").each(function () {
+    var current = $(this);
+    var href = this.href;
+    current.attr("onClick", "trackOutboundLink('" + href + "');"+current.attr("onClick")+";return false;");
+  });
+}
+var trackOutboundLink = function(url) {
+   ga('send', 'event', 'outbound', 'click', url, {
+     'transport': 'beacon',
+     'hitCallback': function(){document.location = url;}
+   });
+}
 
 function Lerp(a, b, t) {
   t = Clamp(t, 0, 1);
