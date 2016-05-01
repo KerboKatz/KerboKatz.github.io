@@ -306,10 +306,10 @@ function TrackExternalLinks() {
     var onClick = current.attr("onClick");
     if (typeof onClick == "undefined")
       onClick = "";
-    current.attr("onClick", "trackOutboundLink('" + href + "');" + onClick + ";return false;");
+    current.attr("onClick", "TrackOutboundLink('" + href + "');" + onClick + ";return false;");
   });
 }
-var trackOutboundLink = function (url) {
+var TrackOutboundLink = function (url) {
   ga('send', 'event', 'outbound', 'click', url, {
     'transport': 'beacon',
     'hitCallback': function () { document.location = url; }
