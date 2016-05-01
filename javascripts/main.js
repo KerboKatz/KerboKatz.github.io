@@ -147,8 +147,15 @@ $(function () {
       "height": lerped
     });
   });
-  TrackExternalLinks();
   setInterval(function () { ajaxCallbacks.iterate(WorkCallback); }, 15 * 60 * 1000);
+  var gaInterval = setInterval(
+    function () {
+      if (ga.loaded) {
+        TrackExternalLinks();
+        clearInterval(gaInterval);
+      }
+    }
+    , 1000);
 });
 function CheckHashState() {
   var slice = location.hash.slice(1);
@@ -299,14 +306,14 @@ function TrackExternalLinks() {
     var onClick = current.attr("onClick");
     if (typeof onClick == "undefined")
       onClick = "";
-    current.attr("onClick", "trackOutboundLink('" + href + "');"+onClick+";");
+    current.attr("onClick", "trackOutboundLink('" + href + "');" + onClick + ";");
   });
 }
-var trackOutboundLink = function(url) {
-   ga('send', 'event', 'outbound', 'click', url, {
-     'transport': 'beacon',
-     'hitCallback': function(){document.location = url;}
-   });
+var trackOutboundLink = function (url) {
+  ga('send', 'event', 'outbound', 'click', url, {
+    'transport': 'beacon',
+    'hitCallback': function () { document.location = url; }
+  });
 }
 
 function Lerp(a, b, t) {
