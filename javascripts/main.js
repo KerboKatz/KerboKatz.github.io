@@ -303,16 +303,26 @@ function TrackExternalLinks() {
   $("a[href]").each(function () {
     var current = $(this);
     var href = this.href;
-    var onClick = current.attr("onClick");
-    if (typeof onClick == "undefined")
-      onClick = "";
-    current.attr("onClick", "TrackOutboundLink('" + href + "');" + onClick + ";return false;");
+    current.click(function (e) {
+      switch (e.which) {
+        case 1:
+          TrackOutboundLink(href, true);
+          break;
+        case 2:
+          TrackOutboundLink(href, false);
+          return true;
+      }
+      return false;
+    });
   });
 }
-var TrackOutboundLink = function (url) {
+var TrackOutboundLink = function (url, useCallBack) {
   ga('send', 'event', 'outbound', 'click', url, {
     'transport': 'beacon',
-    'hitCallback': function () { document.location = url; }
+    'hitCallback': function () {
+      if (useCallBack)
+        document.location = url;
+    }
   });
 }
 
