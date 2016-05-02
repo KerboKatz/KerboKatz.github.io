@@ -230,24 +230,24 @@ function InitMods(mod) {
     }
     callbacks.push(function (data) {
       var count = 0;
-      var lastCount = 0;
-      var releaseDate = 0;
-      var lastVersion = 0;
-      var fileSize = 0;
+      var lastCount = "-";
+      var releaseDate = "-";
+      var lastVersion = "-";
+      var fileSize = "-";
       data.forEach(function (data) {
         data.assets.forEach(
           function (asset) {
             if (asset.name == mod.assetName) {
-              if (lastVersion == 0) {
+              if (lastVersion == "-") {
                 lastVersion = data.name;
               }
-              if (releaseDate == 0) {
+              if (releaseDate == "-") {
                 releaseDate = data.published_at;
               }
-              if (fileSize == 0) {
+              if (fileSize == "-") {
                 fileSize = asset.size;
               }
-              if (lastCount == 0) {
+              if (lastCount == "-") {
                 lastCount = asset.download_count;
               }
               count += asset.download_count;
