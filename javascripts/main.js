@@ -230,6 +230,7 @@ function InitMods(mod) {
     }
     callbacks.push(function (data) {
       var count = 0;
+      var lastCount = 0;
       var releaseDate = 0;
       var lastVersion = 0;
       var fileSize = 0;
@@ -246,6 +247,9 @@ function InitMods(mod) {
               if (fileSize == 0) {
                 fileSize = asset.size;
               }
+              if (lastCount == 0) {
+                lastCount = asset.download_count;
+              }
               count += asset.download_count;
             }
           }
@@ -259,7 +263,8 @@ function InitMods(mod) {
       }
       if (lastVersion != 0)
         infoContainer.children(".lastVersionContainer").children(".lastVersion").text(lastVersion);
-      infoContainer.children(".downloadCountContainer").children(".downloadCount").text(count.toLocaleString());
+      infoContainer.children(".downloadCountContainer").children(".downloadCount").text(lastCount.toLocaleString());
+      infoContainer.children(".downloadCountContainer").children(".totalDownloadCount").text(count.toLocaleString());
       infoContainer.children(".downloadSizeContainer").children(".downloadSize").text(filesize(fileSize));
 
       if (isWebkit) {
