@@ -234,6 +234,7 @@ function InitMods(mod) {
       var releaseDate = "-";
       var lastVersion = "-";
       var fileSize = "-";
+      var htmlLink = "-";
       data.forEach(function (data) {
         data.assets.forEach(
           function (asset) {
@@ -249,6 +250,9 @@ function InitMods(mod) {
               }
               if (lastCount == "-") {
                 lastCount = asset.download_count;
+              }
+              if (htmlLink == "-") {
+                htmlLink = data.html_url;
               }
               count += asset.download_count;
             }
@@ -266,6 +270,8 @@ function InitMods(mod) {
       infoContainer.children(".downloadCountContainer").children(".downloadCount").text(lastCount.toLocaleString());
       infoContainer.children(".downloadCountContainer").children(".totalDownloadCount").text(count.toLocaleString());
       infoContainer.children(".downloadSizeContainer").children(".downloadSize").text(filesize(fileSize));
+
+      githubObj.attr("href", htmlLink);
 
       if (isWebkit) {
         var height = modTemplate.height() - 50;
