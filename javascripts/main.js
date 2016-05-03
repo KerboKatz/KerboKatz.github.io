@@ -218,7 +218,7 @@ function InitMods(mod) {
     $(spacer).insertBefore(sourceObj);
     githubObj.attr("href", "https://github.com/" + mod.github + "/releases");
     sourceObj.attr("href", "https://github.com/" + mod.github);
-
+    githubObj.attr("mainRelease", githubObj.attr("href"));
     prevLinkSet = true;
 
     var apiLink = "https://api.github.com/repos/" + mod.github + "/releases";
@@ -314,6 +314,9 @@ function TrackExternalLinks() {
   $("a[href]").each(function () {
     var current = $(this);
     var href = this.href;
+    if (typeof current.attr("mainRelease") != "undefined") {
+      href = current.attr("mainRelease");
+    }
     current.mousedown(function (e) {
       switch (e.which) {
         case 1:
