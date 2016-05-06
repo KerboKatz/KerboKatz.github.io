@@ -116,7 +116,7 @@ $(function () {
   template = $("#ModTemplate");
   template.removeAttr("id");
   jumpLinkTemplate = $("#jumpLinkTemplate");
-  modInfos.forEach(InitMods);
+  modInfos.forEach(InitMod);
   ajaxCallbacks.iterate(WorkCallback);
   template.remove();
   $(window).on('hashchange', function () {
@@ -180,13 +180,16 @@ function WorkCallback(apiLink, callbacks) {
     });
   });
 }
-function InitMods(mod) {
+function InitMod(mod) {
   var nameSpaceless = mod.name.replace(/\s/g, '')
   var modTemplate = template.clone().appendTo(template.parent());
   var infoContainer = modTemplate.children(".infoContainer");
   var linksContainer = infoContainer.children(".linksContainer");
+  var modNameContainer = infoContainer.children(".ModName");
+  var modNameA = modNameContainer.children("a");
   infoContainer.children(".invisibleLink").attr("id", "JumpTo" + nameSpaceless);
-  infoContainer.children(".ModName").text(mod.name);
+  modNameA.text(mod.name);
+  modNameA.attr("href", "#" + nameSpaceless);
 
 
   var forumLinkObj = linksContainer.children(".forumLink");
@@ -312,6 +315,8 @@ function InitMods(mod) {
 
 function TrackExternalLinks() {
   $("a[href]").each(function () {
+    if (!IsExternal(this))
+      return;
     var current = $(this);
     var href = this.href;
     if (typeof current.attr("mainRelease") != "undefined") {
@@ -354,6 +359,9 @@ function Lerp(a, b, t) {
 function Clamp(n, min, max) {
   return Math.min(Math.max(n, min), max);
 };
+function IsExternal(link) {
+  return (link.host !== window.location.host);
+}
 
 //got this from here and modified it: http://stackoverflow.com/a/15600719 - http://jsfiddle.net/MickMalone1983/VEpFf/2/
 function Dictionary(overwrite) {
