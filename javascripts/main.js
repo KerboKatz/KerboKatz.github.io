@@ -170,7 +170,7 @@ function CheckHashState() {
 }
 function JumpTo(target) {
   body.stop().animate({
-    scrollTop: target.offset().top - 25
+    scrollTop: target.offset().top - 50
   }, 1000);
 }
 function WorkCallback(apiLink, callbacks) {

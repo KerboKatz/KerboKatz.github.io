@@ -26,9 +26,10 @@
 	<body>
 
 		<!-- HEADER -->
+		<div id="JumpToUp"></div>
 		<div id="header_wrap" class="outer">
 			<div id="headerLogo">
-				<img src="./images/HeaderLogoOutline.png" />
+				<a href="#Up" onclick="CheckHashState();"><img src="./images/HeaderLogoOutline.png" /></a>
 			</div>
 		</div>
 		<div id="project_title" class="outer">
@@ -73,7 +74,7 @@
 						<div class="dashedLineLeft"></div>
 						<div class="vertical infoContainer verticalAlign">
 							<a class="invisibleLink" name="invisibleLink"></a>
-							<div class="ModName"><a href="">AwesomeMod</a></div>
+							<div class="ModName"><a href="" onclick="CheckHashState();">AwesomeMod</a></div>
 							<div class="description paddingLeft"></div>
 							<div class="paddingLeft kspVersionContainer">For Kerbal: <span class="kspVersion">0.0.0</span></div>
 							<div class="paddingLeft releaseDateContainer">Last release: <span class="releaseDate">never</span></div>
