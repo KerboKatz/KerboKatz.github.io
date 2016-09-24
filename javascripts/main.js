@@ -107,10 +107,11 @@ var ajaxCallbacks;
 var body;
 var spacer = "<span>&nbsp;-&nbsp;</span>";
 var isWebkit = false;
+var preReleaseTag;
 // Shorthand for $( document ).ready()
 $(function () {
-  isWebkit = 'WebkitAppearance' in document.documentElement.style
-
+  isWebkit = 'WebkitAppearance' in document.documentElement.style;
+  preReleaseTag = "&nbsp;<b>(Pre-release)</b>";
   body = $("html,body");
   ajaxCallbacks = new Dictionary();
   template = $("#ModTemplate");
@@ -238,12 +239,15 @@ function InitMod(mod) {
       var lastVersion = "-";
       var fileSize = "-";
       var htmlLink = "-";
+      var isPreRelease = false;
       data.forEach(function (data) {
         data.assets.forEach(
           function (asset) {
             if (asset.name == mod.assetName) {
               if (lastVersion == "-") {
                 lastVersion = data.name;
+                if (data.prerelease)
+                  isPreRelease = true;
               }
               if (releaseDate == "-") {
                 releaseDate = data.published_at;
@@ -268,8 +272,11 @@ function InitMod(mod) {
         var time = timeSplit[1];
         infoContainer.children(".releaseDateContainer").children(".releaseDate").text(date[2] + "." + date[1] + "." + date[0]);
       }
-      if (lastVersion != 0)
-        infoContainer.children(".lastVersionContainer").children(".lastVersion").text(lastVersion);
+      if (lastVersion != 0) {
+        var lastVersion = infoContainer.children(".lastVersionContainer").children(".lastVersion").text(lastVersion);
+        if (isPreRelease)
+          lastVersion.append(preReleaseTag);
+      }
       infoContainer.children(".downloadCountContainer").children(".downloadCount").text(lastCount.toLocaleString());
       infoContainer.children(".downloadCountContainer").children(".totalDownloadCount").text(count.toLocaleString());
       infoContainer.children(".downloadSizeContainer").children(".downloadSize").text(filesize(fileSize));
