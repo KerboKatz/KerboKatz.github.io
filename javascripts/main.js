@@ -99,8 +99,16 @@ var modInfos = [
     "github": "KerboKatz/SmallUtilities",
     "curse": "kerbokatz-smallutilities",
     "assetName": "SmallUtilities.EditorCamUtilities.zip",
-    "icon": "EditorCamUtilities",
     "netkan": "KerboKatzSmallUtilities-EditorCamUtilities"
+  },
+  {
+    "name": "SmallUtilities - KerbalScienceExchange",
+    "description": "This little tool allows you exchange funds for science and vice versa.",
+    "forum": "104505",
+    "github": "KerboKatz/SmallUtilities",
+    "curse": "kerbokatz-SmallUtilities",
+    "assetName": "SmallUtilities.KerbalScienceExchange.zip",
+    "netkan": "KerboKatzSmallUtilities-KerbalScienceExchange"
   }
 ];
 var ajaxCallbacks;
@@ -266,13 +274,13 @@ function InitMod(mod) {
           }
         );
       });
-      if (releaseDate != 0) {
+      if (releaseDate != "-") {
         var timeSplit = releaseDate.split("T");
         var date = timeSplit[0].split("-");
         var time = timeSplit[1];
         infoContainer.children(".releaseDateContainer").children(".releaseDate").text(date[2] + "." + date[1] + "." + date[0]);
       }
-      if (lastVersion != 0) {
+      if (lastVersion != "-") {
         var lastVersion = infoContainer.children(".lastVersionContainer").children(".lastVersion").text(lastVersion);
         if (isPreRelease)
           lastVersion.append(preReleaseTag);
