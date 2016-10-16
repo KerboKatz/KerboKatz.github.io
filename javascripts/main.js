@@ -109,6 +109,16 @@ var modInfos = [
     "curse": "kerbokatz-SmallUtilities",
     "assetName": "SmallUtilities.KerbalScienceExchange.zip",
     "netkan": "KerboKatzSmallUtilities-KerbalScienceExchange"
+  },
+  {
+    "name": "SmallUtilities - DailyFunds",
+    "description": "This tool gives you funds every day based on your reputation.",
+    "forum": "104505",
+    "github": "KerboKatz/SmallUtilities",
+    "curse": "kerbokatz-SmallUtilities",
+    "assetName": "SmallUtilities.DailyFunds.zip",
+    "icon": "Utilities",
+    "netkan": "KerboKatzSmallUtilities-DailyFunds"
   }
 ];
 var ajaxCallbacks;
