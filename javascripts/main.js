@@ -12,7 +12,7 @@ var modInfos = [
     "description": "Automates your science experiments.",
     "forum": "95531",
     "github": "KerboKatz/AutomatedScienceSampler",
-    "curse": "automatedsciencesampler",
+    //"curse": "automatedsciencesampler",
     "assetName": "AutomatedScienceSampler.zip",
     "netkan": "AutomatedScienceSampler"
   },
@@ -21,7 +21,7 @@ var modInfos = [
     "description": "CraftHistory replaces the stock craft loading and saving to include subfolders as well as create a history of your crafts.",
     "forum": "99770",
     "github": "KerboKatz/CraftHistory",
-    "curse": "crafthistory",
+    //"curse": "crafthistory",
     "assetName": "CraftHistory.zip",
     "netkan": "CraftHistory"
   },
@@ -30,7 +30,7 @@ var modInfos = [
     "description": "This is a pack of all the SmallUtility mods.",
     "forum": "104505",
     "github": "KerboKatz/SmallUtilities",
-    "curse": "kerbokatz-smallutilities",
+    //"curse": "kerbokatz-smallutilities",
     "assetName": "SmallUtilities.zip",
     "icon": "Utilities",
     "netkan": "KerboKatzSmallUtilities"
@@ -40,7 +40,7 @@ var modInfos = [
     "description": "Adds the ability to limit the FPS in the background and while focused.",
     "forum": "104505",
     "github": "KerboKatz/SmallUtilities",
-    "curse": "kerbokatz-smallutilities",
+    //"curse": "kerbokatz-smallutilities",
     "assetName": "SmallUtilities.FPSLimiter.zip",
     "netkan": "KerboKatzSmallUtilities-FPSLimiter"
   },
@@ -49,7 +49,7 @@ var modInfos = [
     "description": "Adds a display of the current, as well as minimum and maximum FPS.",
     "forum": "104505",
     "github": "KerboKatz/SmallUtilities",
-    "curse": "kerbokatz-smallutilities",
+    //"curse": "kerbokatz-smallutilities",
     "assetName": "SmallUtilities.FPSViewer.zip",
     "netkan": "KerboKatzSmallUtilities-FPSViewer"
   },
@@ -58,7 +58,7 @@ var modInfos = [
     "description": "Displays a simple layer much like FPSViewer to compare ingame vs real time speed.",
     "forum": "104505",
     "github": "KerboKatz/SmallUtilities",
-    "curse": "kerbokatz-smallutilities",
+    //"curse": "kerbokatz-smallutilities",
     "assetName": "SmallUtilities.PhysicalTimeRatioViewer.zip",
     "netkan": "KerboKatzSmallUtilities-PhysicalTimeRatioViewer"
   },
@@ -67,7 +67,7 @@ var modInfos = [
     "description": "Modifies the explosion potential in order to create bigger or smaller explosions.",
     "forum": "104505",
     "github": "KerboKatz/SmallUtilities",
-    "curse": "kerbokatz-smallutilities",
+    //"curse": "kerbokatz-smallutilities",
     "assetName": "SmallUtilities.ModifiedExplosionPotential.zip",
     "icon": "Utilities",
     "netkan": "KerboKatzSmallUtilities-ModifiedExplosionPotential"
@@ -77,7 +77,7 @@ var modInfos = [
     "description": "Adds the ability to recover all landed vessels in one go.",
     "forum": "104505",
     "github": "KerboKatz/SmallUtilities",
-    "curse": "kerbokatz-smallutilities",
+    //"curse": "kerbokatz-smallutilities",
     "assetName": "SmallUtilities.RecoverAll.zip",
     "icon": "Utilities",
     "netkan": "KerboKatzSmallUtilities-RecoverAll"
@@ -87,7 +87,7 @@ var modInfos = [
     "description": "Adds the ability to destroy multiple vessels quickly.",
     "forum": "104505",
     "github": "KerboKatz/SmallUtilities",
-    "curse": "kerbokatz-smallutilities",
+    //"curse": "kerbokatz-smallutilities",
     "assetName": "SmallUtilities.DestroyAll.zip",
     "icon": "Utilities",
     "netkan": "KerboKatzSmallUtilities-DestroyAll"
@@ -97,7 +97,7 @@ var modInfos = [
     "description": "This little tool allows you to switch between the VAB and SPH camera.",
     "forum": "104505",
     "github": "KerboKatz/SmallUtilities",
-    "curse": "kerbokatz-smallutilities",
+    //"curse": "kerbokatz-smallutilities",
     "assetName": "SmallUtilities.EditorCamUtilities.zip",
     "netkan": "KerboKatzSmallUtilities-EditorCamUtilities"
   },
@@ -106,7 +106,7 @@ var modInfos = [
     "description": "This little tool allows you exchange funds for science and vice versa.",
     "forum": "104505",
     "github": "KerboKatz/SmallUtilities",
-    "curse": "kerbokatz-SmallUtilities",
+    //"curse": "kerbokatz-SmallUtilities",
     "assetName": "SmallUtilities.KerbalScienceExchange.zip",
     "netkan": "KerboKatzSmallUtilities-KerbalScienceExchange"
   },
@@ -115,7 +115,7 @@ var modInfos = [
     "description": "This tool gives you funds every day based on your reputation.",
     "forum": "104505",
     "github": "KerboKatz/SmallUtilities",
-    "curse": "kerbokatz-SmallUtilities",
+    //"curse": "kerbokatz-SmallUtilities",
     "assetName": "SmallUtilities.DailyFunds.zip",
     "icon": "Utilities",
     "netkan": "KerboKatzSmallUtilities-DailyFunds"
